@@ -23,7 +23,7 @@ public class ManageFragment extends Fragment {
         manageViewModel =
                 ViewModelProviders.of(this).get(ManageViewModel.class);
         View root = inflater.inflate(R.layout.fragment_manage, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
+        final TextView textView = root.findViewById(R.id.text_ManageBaseText);
         manageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {

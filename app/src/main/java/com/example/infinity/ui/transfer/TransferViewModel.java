@@ -10,7 +10,7 @@ public class TransferViewModel extends ViewModel {
 
     public TransferViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is gallery fragment");
+        mText.setValue("QuickLink Transfer Holder");
     }
 
     public LiveData<String> getText() {

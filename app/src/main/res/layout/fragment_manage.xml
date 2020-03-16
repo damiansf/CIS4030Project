@@ -7,7 +7,7 @@
     tools:context=".ui.manage.ManageFragment">
 
     <TextView
-        android:id="@+id/text_slideshow"
+        android:id="@+id/text_ManageBaseText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
