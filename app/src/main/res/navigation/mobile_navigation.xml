@@ -17,9 +17,9 @@
     </fragment>
     <fragment
         android:id="@+id/nav_home_second"
-        android:name="com.example.infinity.ui.home.HomeSecondFragment"
+        android:name="com.example.infinity.ui.home.HomeFragment"
         android:label="@string/home_second"
-        tools:layout="@layout/fragment_home_second">
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_HomeSecondFragment_to_HomeFragment"
             app:destination="@id/nav_home" />
@@ -35,7 +35,7 @@
         android:label="@string/menu_transfer"
         tools:layout="@layout/fragment_transfer" />
 
-    <fragments
+    <fragment
         android:id="@+id/nav_manage"
         android:name="com.example.infinity.ui.manage.ManageFragment"
         android:label="@string/menu_manage"
