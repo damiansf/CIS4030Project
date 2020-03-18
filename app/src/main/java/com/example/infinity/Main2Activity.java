@@ -5,8 +5,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.Fragment;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -78,17 +80,18 @@ public class Main2Activity extends AppCompatActivity implements ImportFileFragme
         return result;
     }
 
-    public static void copy(File src, File dst) throws IOException {
-        try (InputStream in = new FileInputStream(src)) {
-            try (OutputStream out = new FileOutputStream(dst)) {
-                // Transfer bytes from in to out
-                byte[] buf = new byte[1024];
-                int len;
-                while ((len = in.read(buf)) > 0) {
-                    out.write(buf, 0, len);
-                }
-            }
+    public File copy(Uri src, String dst) throws IOException {
+        InputStream in =  getContentResolver().openInputStream(src);
+        File newFile = new File(dst);
+        OutputStream out = new FileOutputStream(newFile);
+        byte[] buf = new byte[1024];
+        int len;
+        while((len=in.read(buf))>0){
+            out.write(buf,0,len);
         }
+        out.close();
+        in.close();
+        return newFile;
     }
 
     @Override
@@ -117,15 +120,27 @@ public class Main2Activity extends AppCompatActivity implements ImportFileFragme
             Log.i("test", newFileName);
 
             //copy the selected file to the user files directory with the new name
-            File newFile = new File(userFilesStoragePath + "/" + newFileName);
+            String newFilePath = userFilesStoragePath + "/" + newFileName;
             try {
-                copy(file, newFile);
-                Log.i("Copy Success", "Successfully copied" + file.getPath() + " to " + newFile.getPath());
+//                if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//                        != PackageManager.PERMISSION_GRANTED) {
+//                    // Permission is not granted
+//                }
+                if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    // Permission is not granted
+                    Toast toast = Toast.makeText(getApplicationContext(),"Permission to read external storage required.", Toast.LENGTH_SHORT);
+                    return;
+                }
+
+                File newFile = copy(file_uri, newFilePath);
+                Log.i("Copy Success", "Successfully copied " + file.getPath() + " to " + newFile.getPath());
             }
             catch (IOException e) {
                 Toast toast = Toast.makeText(getApplicationContext(),"Failed to import file.", Toast.LENGTH_SHORT);
                 toast.show();
-                Log.i("Copy Fail", "Failed to copy" + file.getPath() + " to " + newFile.getPath());
+                Log.i("Copy Fail", "Failed to copy " + file.getPath() + " to " + newFilePath);
+                Log.i("IO Exception", e.toString());
             }
         }
 
