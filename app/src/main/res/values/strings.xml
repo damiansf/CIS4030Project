@@ -29,5 +29,7 @@
     <string name="tag_save_as">Save As</string>
     <string name="tag_export">Export</string>
     <string name="tag_delete">Delete</string>
+    <string name="tag_import">Import</string>
+    <string name="tag_transfer">Transfer</string>
 
 </resources>
