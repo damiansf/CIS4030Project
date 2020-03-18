@@ -6,8 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ui.transfer.TransferFragment">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/text_TransferBaseText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_logo_v1_o50">
+
+    </ImageView>
+
     <TextView
-        android:id="@+id/text_gallery"
+        android:id="@+id/text_TransferBaseText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
