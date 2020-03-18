@@ -11,5 +11,17 @@
     <string name="menu_transfer">Transfer</string>
     <string name="menu_manage">Manage</string>
     <string name="menu_receive">Receive</string>
+    <string-array name="file_types">
+        <item>Business Card</item>
+        <item>Resume</item>
+        <item>Cover Letter</item>
+        <item>Transcript</item>
+        <item>CV</item>
+    </string-array>
 
+    <string name="team_name">Infinity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>
