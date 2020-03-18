@@ -9,9 +9,8 @@
     <string name="placeHolder">PLACE HOLDER</string>
 
     <string name="menu_home">Home</string>
-    <string name="menu_transfer">Transfer</string>
-    <string name="menu_manage">Manage</string>
-    <string name="menu_receive">Receive</string>
+    <string name="menu_manage">Personal Files</string>
+    <string name="menu_receive">Received Files</string>
     <string-array name="file_types">
         <item>Business Card</item>
         <item>Resume</item>

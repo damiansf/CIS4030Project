@@ -9,10 +9,6 @@
             android:icon="@drawable/ic_home_black"
             android:title="@string/menu_home" />
         <item
-            android:id="@+id/nav_transfer"
-            android:icon="@drawable/ic_tap_and_play_black"
-            android:title="@string/menu_transfer" />
-        <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_folder_black"
             android:title="@string/menu_manage" />
