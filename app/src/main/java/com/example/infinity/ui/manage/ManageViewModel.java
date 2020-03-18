@@ -10,7 +10,7 @@ public class ManageViewModel extends ViewModel {
 
     public ManageViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is slideshow fragment");
+        mText.setValue("QuickLink Manage Holder");
     }
 
     public LiveData<String> getText() {
