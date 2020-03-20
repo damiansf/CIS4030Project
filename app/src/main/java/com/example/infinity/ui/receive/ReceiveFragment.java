@@ -1,6 +1,8 @@
 package com.example.infinity.ui.receive;
 
 import android.app.admin.FreezePeriod;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,6 +85,38 @@ public class ReceiveFragment extends Fragment {
             public void onClick(View v)
             {
                 //TODO
+            }
+        });
+
+        Button exportButton = root.findViewById(R.id.btn_export);
+        exportButton.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v)
+            {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND_MULTIPLE);
+                sendIntent.setType("application/pdf");
+                ArrayList<Uri> filesToSend = new ArrayList<>();
+
+                for (String fileName: selectedFiles) {
+                    File shareFile = null;
+                    File[] files = new File(path + "/quicklink-received-files").listFiles();
+
+                    for(File file: files) {
+                        if (file.getName().equals(fileName)) {
+                            shareFile = file;
+                            break;
+                        }
+                    }
+                    if (shareFile != null) {
+                        filesToSend.add(Uri.fromFile(shareFile));
+                    }
+
+                }
+
+                sendIntent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, filesToSend);
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
             }
         });
 
