@@ -14,6 +14,9 @@
 # Java class files
 *.class
 
+# Macbook bs
+.DS_Store
+
 # Generated files
 bin/
 gen/
