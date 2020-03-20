@@ -49,7 +49,7 @@ public class ReceiveFragment extends Fragment {
                 ContextCompat.getExternalFilesDirs(root.getContext(), null);
         File primaryExternalStorage = externalStorageVolumes[0];
         this.path = primaryExternalStorage.getPath();
-        File[] files = new File(path + "/quicklink-user-files").listFiles(); //TODO change this path to the transfer path
+        File[] files = new File(path + "/quicklink-received-files").listFiles();
 
         Button deleteButton = root.findViewById(R.id.btn_delete_receive);
         deleteButton.setOnClickListener(new Button.OnClickListener() {
@@ -57,7 +57,7 @@ public class ReceiveFragment extends Fragment {
             {
                 for (String fileName: selectedFiles) {
                     File deleteFile = null;
-                    File[] files = new File(path + "/quicklink-user-files").listFiles(); //TODO change this path to the transfer path
+                    File[] files = new File(path + "/quicklink-received-files").listFiles();
 
                     for(File file: files) {
                         if (file.getName().equals(fileName)) {
